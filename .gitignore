@@ -1,0 +1,11 @@
+.ipynb_checkpoints
+.vscode
+
+data/
+openpose/
+mua/
+knowledge/
+handtracking/
+
+images.pkl
+labels.pkl
