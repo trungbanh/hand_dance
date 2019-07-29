@@ -1,0 +1,9 @@
+day     |   process |
+1       |Đọc yêu cầu tìm hiểu tài liệu, phân tích các tính năng cần có 
+2       |trao đổi với thầy sâu về công nghệ, thuật toán và việc cần làm 
+3       |tìm kiếm công cụ 
+        |   \--hand detect tạo dữ liệu học gồm các thế tay  
+        |   \--chọn giải thuật học để đánh phân lớp thế tay 
+        |       \-- Knn 
+        |       \-- SVM 
+        |đem mô hình học vào công cụ hand detect để kiểm tra thực tế    

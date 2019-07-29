@@ -32,7 +32,7 @@ def read(path='./knowledge/') -> np:
                 print(r)
                 for img in f:
                     img = cv2.imread(r+'/'+img)
-                    img = cv2.resize(img, (100, 100))
+                    img = cv2.resize(img, (128, 128))
                     images.append(img)
                     labels.append(CLASSIFY[r.split('/')[2]])
 
@@ -40,10 +40,10 @@ def read(path='./knowledge/') -> np:
 
 
 def hogDescriptor():
-    winSize = (20, 20)
-    blockSize = (10, 10)
-    blockStride = (5, 5)
-    cellSize = (10, 10)
+    winSize = (128, 128)
+    blockSize = (16, 16)
+    blockStride = (8, 8)
+    cellSize = (8, 8)
     nbins = 9
     derivAperture = 1
     winSigma = -1.
@@ -103,9 +103,9 @@ def SVM_Classifycaition(X, y):
     # Train SVM on training data
     svm.train(np.float32(X), cv2.ml.ROW_SAMPLE, np.int32(y))
     # Save trained model
-    # svm.save("hand.yml")
-    print(type(np.float32(X)))
-    print(np.float32(X).shape)
+    svm.save("hand.yml")
+    # print(type(np.float32(X)))
+    # print(np.float32(X).shape)
 
 
 def predict(image):
@@ -126,8 +126,14 @@ def predict(image):
     print(np.float32(xi).shape)
 
 
-# image = cv2.imread('mau_thu.png')
+images, labels = read()
 
-# image = cv2.resize(image, (100, 100))
+with open('images.pkl', 'wb') as file:
+    pickle.dump(images, file)
 
-# predict(image)
+with open('labels.pkl', 'wb') as file:
+    pickle.dump(labels, file)
+
+des, labels = getFeature()
+
+SVM_Classifycaition(des, labels)
