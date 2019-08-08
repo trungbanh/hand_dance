@@ -59,22 +59,16 @@ def SVM_Classifycaition(X, y):
     svm.train(np.float32(X), cv2.ml.ROW_SAMPLE, np.int32(y))
     # Save trained model
     svm.save("hand.yml")
-
-
-def KNN(X,y):
-    nbrs = KNeighborsClassifier(n_neighbors=5, algorithm='ball_tree').fit(X, y)
-    with open("knn.pkl", "wb") as file:
-        pickle.dump(nbrs, file)
+    # print(type(np.float32(X)))
+    # print(np.float32(X).shape)
 
 
 def predict(image):
-    with open('knn.pkl', 'rb') as file:
-        knn = pickle.load(file)
-    image = image.reshape(1, -1)
+
+    svm = cv2.ml.SVM_load('hand.yml')
     data = PCA(image)
-    testResponse = knn.predict(data)
+    testResponse = svm.predict(np.float32(data))[1]
     print(testResponse)
-    return testResponse
 
 
 images, labels = read()
@@ -83,6 +77,4 @@ images = np.reshape(images, (127, -1))
 
 components = PCA(images)
 
-KNN(components, labels)
-
-# SVM_Classifycaition(components, labels)
+SVM_Classifycaition(components, labels)

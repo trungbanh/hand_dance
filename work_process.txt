@@ -7,3 +7,10 @@ day     |   process |
         |       \-- Knn 
         |       \-- SVM 
         |đem mô hình học vào công cụ hand detect để kiểm tra thực tế    
+4	|tìm thêm chi tiết từ điệu múa như chân, toàn thân 
+	|	\-- sử dụng open pose full_body 25 point 
+	|	\-- cắt khung tìm mô hình học thích hợp 
+	|	\-- tổng hợp mô hình cho cả 3 trường hợp 
+
+
+https://www.sciencedirect.com/science/article/pii/S1077314216000138

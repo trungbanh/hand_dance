@@ -6,6 +6,9 @@ openpose/
 mua/
 knowledge/
 handtracking/
+bodyposture/
+pose/
+
 
 images.pkl
 labels.pkl
